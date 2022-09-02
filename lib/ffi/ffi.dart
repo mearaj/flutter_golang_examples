@@ -24,8 +24,20 @@ final getPort = dynamicLib
     .lookup<ffi.NativeFunction<get_port>>('GetPort')
     .asFunction<GetPort>();
 
-
 String _getLibraryPath() {
-  var libraryPath = path.join(Directory.current.path,'go','server.a');
+  String libraryPath = "";
+  try {
+    if (Platform.isAndroid) {
+      libraryPath = path.join(Directory.current.path,'go','server.a');
+    }else if (Platform.isMacOS) {
+      libraryPath = path.join(Directory.current.path,'go','server.dylib');
+    } else if (Platform.isWindows) {
+      libraryPath = path.join(Directory.current.path,'go','server.dll');
+    } else {
+      libraryPath = path.join(Directory.current.path,'go','server.a');
+    }
+  } catch (e) {
+    print(e);
+  }
   return libraryPath;
 }

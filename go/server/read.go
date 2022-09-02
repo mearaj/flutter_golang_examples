@@ -14,7 +14,7 @@ func (*Server) ReadBlog(ctx context.Context, in *pb.BlogId) (*pb.Blog, error) {
 	log.Printf("ReadBlog was invoked with %v\n", in)
 
 	log.Printf("DeleteBlog was invoked with %v\n", in)
-	for _, eachBlog := range collection {
+	for _, eachBlog := range Collection {
 		if eachBlog.ID == in.GetId() {
 			return documentToBlog(&eachBlog), nil
 		}

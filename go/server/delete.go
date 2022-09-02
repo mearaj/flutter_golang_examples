@@ -12,11 +12,11 @@ import (
 
 func (*Server) DeleteBlog(ctx context.Context, in *pb.BlogId) (*emptypb.Empty, error) {
 	log.Printf("DeleteBlog was invoked with %v\n", in)
-	for index, eachBlog := range collection {
+	for index, eachBlog := range Collection {
 		if eachBlog.ID == in.GetId() {
 			newCollection := make([]BlogItem, 0)
-			newCollection = append(newCollection, collection[:index]...)
-			collection = append(newCollection, collection[:index]...)
+			newCollection = append(newCollection, Collection[:index]...)
+			Collection = append(newCollection, Collection[:index]...)
 			return &emptypb.Empty{}, nil
 		}
 	}

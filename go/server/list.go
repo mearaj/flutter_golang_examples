@@ -6,7 +6,7 @@ import (
 )
 
 func (*Server) ListBlogs(_ *emptypb.Empty, stream pb.BlogService_ListBlogsServer) error {
-	for _, eachblog := range collection {
+	for _, eachblog := range Collection {
 		stream.Send(documentToBlog(&eachblog))
 	}
 

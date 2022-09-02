@@ -11,7 +11,7 @@ import (
 	"net"
 )
 
-var collection = make([]BlogItem, 0)
+var Collection = make([]BlogItem, 0)
 
 //export Port
 var Port int

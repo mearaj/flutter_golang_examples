@@ -74,9 +74,9 @@ typedef struct { void *data; GoInt len; GoInt cap; } GoSlice;
 extern "C" {
 #endif
 
-extern void StartServer();
-extern void StopServer();
-extern GoInt GetPort();
+extern __declspec(dllexport) void StartServer();
+extern __declspec(dllexport) void StopServer();
+extern __declspec(dllexport) GoInt GetPort();
 
 #ifdef __cplusplus
 }

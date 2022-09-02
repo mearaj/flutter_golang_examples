@@ -13,9 +13,9 @@ import (
 
 func (*Server) UpdateBlog(ctx context.Context, in *pb.Blog) (*emptypb.Empty, error) {
 	log.Printf("UpdateBlog was invoked with %v\n", in)
-	for index, eachBlog := range collection {
+	for index, eachBlog := range Collection {
 		if eachBlog.ID == in.GetId() {
-			collection[index] = BlogItem{
+			Collection[index] = BlogItem{
 				ID:       in.GetId(),
 				AuthorID: in.GetAuthorId(),
 				Title:    in.GetTitle(),
